@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Niko & Sere - Matrimonio</title>
+  <style>
+    /* Reset e stili di base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(to bottom, #ffffff, #ffffff);
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    /* Sezione Hero */
+    .hero {
+      position: relative;
+      min-height: 60vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .hero-image {
+      width: 100%;
+      height: auto;
+      max-height: 90vh;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .hero-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+    
+    .hero-title {
+      font-family: Georgia, serif;
+      font-size: 3rem;
+      font-weight: 300;
+      letter-spacing: 2px;
+    }
+    
+    .hero-subtitle {
+      margin-top: 1rem;
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      font-style: italic;
+    }
+    
+    .hero-divider {
+      margin-top: 2rem;
+      height: 1px;
+      width: 6rem;
+      background-color: white;
+    }
+    
+    .hero-date {
+      margin-top: 2rem;
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+    }
+    
+    /* Sezione Annuncio */
+    .announcement {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+    
+    .announcement-title {
+      font-family: Georgia, serif;
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+    
+    .announcement-text {
+      margin-top: 1.5rem;
+      font-size: 1.125rem;
+      color: #4b5563;
+    }
+    
+    .details {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    
+    .detail-section h3 {
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+    }
+    
+    .detail-section p {
+      margin-top: 0.5rem;
+      color: #4b5563;
+    }
+    
+    /* Sezione Lista Nozze */
+    .gift-registry {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 1rem;
+    }
+    
+    .gift-button-container {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .gift-button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.5rem;
+      border: 1px solid #f9c4d2;
+      border-radius: 9999px;
+      background: none;
+      color: #be185d;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .gift-button:hover {
+      background-color: #fce7f3;
+    }
+    
+    .gift-panel {
+      margin-top: 1.5rem;
+      border: 1px solid #f9c4d2;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: none;
+    }
+    
+    .gift-panel.open {
+      display: block;
+    }
+    
+    .gift-panel-header {
+      padding: 1.5rem;
+      text-align: center;
+    }
+    
+    .gift-panel-title {
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+    }
+    
+    .gift-panel-description {
+      margin-top: 0.5rem;
+      color: #6b7280;
+    }
+    
+    .gift-panel-content {
+      padding: 0 1.5rem 1.5rem;
+    }
+    
+    .gift-option {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background-color: #f9fafb;
+      border-radius: 0.5rem;
+    }
+    
+    .gift-option h3 {
+      font-weight: 500;
+      color: #111827;
+    }
+    
+    .gift-option p {
+      margin-top: 0.25rem;
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    
+    .iban-container {
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .iban-code {
+      padding: 0.25rem 0.5rem;
+      background-color: white;
+      border-radius: 0.25rem;
+      font-family: monospace;
+      font-size: 0.875rem;
+    }
+    
+    .copy-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      padding: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #6b7280;
+    }
+    
+    .copy-button:hover {
+      color: #111827;
+    }
+    
+    .copied-message {
+      font-size: 0.75rem;
+      color: #059669;
+      display: none;
+    }
+    
+    .copied-message.visible {
+      display: inline;
+    }
+    
+    .paypal-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+    
+    .paypal-button:hover {
+      background-color: #2563eb;
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: #fff5f7;
+      padding: 2rem;
+      text-align: center;
+      color: #6b7280;
+    }
+    
+    /* Responsive */
+    @media (min-width: 768px) {
+      .hero-title {
+        font-size: 4rem;
+      }
+      
+      .hero-subtitle, .hero-date {
+        font-size: 1.75rem;
+      }
+      
+      .announcement-title {
+        font-size: 2.5rem;
+      }
+      
+      .details {
+        flex-direction: row;
+        justify-content: center;
+        gap: 4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sezione Hero -->
+  <section class="hero">
+    <img src="wedding.jpeg" alt="" class="hero-image">
+  </section>
+
+  <!-- Sezione Annuncio -->
+  <section class="announcement">
+    <p>Con immensa gioia vi annunciamo che il 5 aprile ci sposeremo! Abbiamo deciso di celebrare questo momento in maniera intima, con il solo rito del matrimonio civile alla presenza dei nostri genitori e dei testimoni.</p>
+        
+        <p><br />Anche se in quella giornata non organizzeremo una grande cerimonia, non vediamo l'ora di ritrovarci al più presto con ognuno di voi per festeggiare insieme e condividere tutta la nostra felicità.</p>
+        
+        <p><br/>Vi abbracciamo forte e vi ringraziamo di cuore per il vostro affetto.</p>
+        
+    </p>
+    
+  </section>
+
+  <!-- Sezione Lista Nozze -->
+  <section class="gift-registry">
+    <div class="gift-button-container">
+      <button id="giftButton" class="gift-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 12v10H4V12"></path>
+          <path d="M2 7h20v5H2z"></path>
+          <path d="M12 22V7"></path>
+          <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+          <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+        </svg>
+        <span>Lista Nozze</span>
+        <svg id="chevronIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m6 9 6 6 6-6"></path>
+        </svg>
+      </button>
+    </div>
+    
+    <div id="giftPanel" class="gift-panel">
+      <div class="gift-panel-header">
+        <h3 class="gift-panel-title">Lista Nozze</h3>
+        <p class="gift-panel-description">
+          Se desiderate onorarci con un regalo, 
+          abbiamo fornito alcune opzioni qui sotto.
+        </p>
+      </div>
+      <div class="gift-panel-content">
+        <div class="gift-option">
+          <h3>Bonifico Bancario</h3>
+          <p>
+            Se preferisci inviare un regalo tramite bonifico bancario, puoi utilizzare il seguente IBAN:
+          </p>
+          <div class="iban-container">
+            <code id="ibanCode" class="iban-code">IT92T36772223000EM000055575</code>
+            <button id="copyButton" class="copy-button" aria-label="Copia IBAN">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+              </svg>
+            </button>
+            <span id="copiedMessage" class="copied-message">Copiato!</span>
+          </div>
+        </div>
+        
+        <div class="gift-option">
+          <h3>PayPal</h3>
+          <p>
+            Puoi anche inviare un regalo utilizzando PayPal:
+          </p>
+          <a href="https://paypal.me/mogui247" target="_blank" rel="noopener noreferrer" class="paypal-button">
+            <span>Invia tramite PayPal.me</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Con tanto amore, Niko & Sere</p>
+  </footer>
+
+  <script>
+    // Toggle della Lista Nozze
+    const giftButton = document.getElementById('giftButton');
+    const giftPanel = document.getElementById('giftPanel');
+    const chevronIcon = document.getElementById('chevronIcon');
+    let isOpen = false;
+
+    giftButton.addEventListener('click', () => {
+      isOpen = !isOpen;
+      if (isOpen) {
+        giftPanel.classList.add('open');
+        chevronIcon.innerHTML = '<path d="m18 15-6-6-6 6"></path>';
+      } else {
+        giftPanel.classList.remove('open');
+        chevronIcon.innerHTML = '<path d="m6 9 6 6 6-6"></path>';
+      }
+    });
+
+    // Funzionalità copia IBAN
+    const copyButton = document.getElementById('copyButton');
+    const ibanCode = document.getElementById('ibanCode');
+    const copiedMessage = document.getElementById('copiedMessage');
+
+    copyButton.addEventListener('click', () => {
+      navigator.clipboard.writeText(ibanCode.textContent)
+        .then(() => {
+          copiedMessage.classList.add('visible');
+          setTimeout(() => {
+            copiedMessage.classList.remove('visible');
+          }, 2000);
+        })
+        .catch(err => {
+          console.error('Errore durante la copia: ', err);
+        });
+    });
+  </script>
+</body>
+</html>
